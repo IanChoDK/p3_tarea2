@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,7 +23,43 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <nav className="w-full h-16 flex items-center justify-start text-white">
+          <h1 className="text-lg font-bold pl-8">App de notas</h1>
+          <div className="ml-10 flex items-center gap-4">
+            <Link href={"/"} className="hover:underline">
+              Home
+            </Link>
+            <Link href={"/notes"} className="hover:underline">
+              Notas
+            </Link>
+            <Link href={"/updates"} className="hover:underline">
+              Updates
+            </Link>
+            <Link href={"/about"} className="hover:underline">
+              About
+            </Link>
+          </div>
+        </nav>
+        
+        {children}
+
+          <footer className="w-full h-30 flex items-center justify-center text-white mt-auto">
+            <p className="text-sm">&copy; App de notas. Ibañez Ian, developer. </p>
+              <div className="ml-4 flex items-start flex-col">
+                <h3 className="text-sm font-semibold">PAGINAS PRINCIPALES</h3>
+                <Link href={"/"} className="ml-4 hover:underline">
+                  Home
+                </Link>
+                <Link href={"/notes"} className="ml-4 hover:underline">
+                  Notas
+                </Link>
+                <Link href={"/updates"} className="ml-4 hover:underline">
+                  Updates
+                </Link>
+              </div>
+          </footer>
+      </body>
     </html>
   );
 }
