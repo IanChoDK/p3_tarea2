@@ -6,7 +6,6 @@ export default async function page({ params }) {
 
   const { id } = await params
 
-  // funcion buscar notas (localhost:3000/notes/{id}) => me trae un objeto nota {id: 1, title: "Nota 1", content: "Contenido de la nota 1"}
 
   const update = {
     id: 1,
@@ -16,24 +15,24 @@ export default async function page({ params }) {
   }
 
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
+    <div className="flex flex-col flex-1 items-center justify-center font-sans dark:bg-blue-900">
+      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-blue-900">
+        <div className="flex flex-col items-center gap-3 text-center sm:items-start sm:text-left">
+          <h1 className="max-w-xs text-5xl font-semibold leading-10 tracking-tight dark:text-zinc-50">
             {update.title}
           </h1>
-          <p className='text-gray-500 dark:text-gray-400'>
+          <p className='text-gray-400'>
             {update.fecha}
           </p>
         </div>
 
-        <p className='text-justify'>
+        <p className='py-5 text-justify'>
           {update.content}
         </p>
 
-        <section className='w-full h-64 my-8 p-4 rounded-lg flex flex-col bg-zinc-800 text-white justify-between'>
+        <section className='w-full h-64 my-8 p-4 rounded-lg flex flex-col bg-amber-500 text-black justify-between'>
           <p className='text-lg font-semibold'>Actualizaciones en desarollo</p>
-            <ul className='list-disc list-inside text-sm text-white'>
+            <ul className='text-white'>
                 <li>Añadir navbar</li>
                 <li>Mejorar el diseño de las paginas</li>
                 <li>Añadir footer</li>
