@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,41 +25,13 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <nav className="w-full h-16 flex items-center justify-between bg-blue-950 text-white">
-          <h1 className="text-lg font-bold pl-8">App de notas</h1>
-          <div className="ml-10 flex gap-4">
-            <Link href={"/"} className="bg-blue-950 hover:bg-blue-800 px-3 py-1 rounded-md transition-colors">
-              Home
-            </Link>
-            <Link href={"/notes"} className="bg-blue-950 hover:bg-blue-800 px-3 py-1 rounded-md transition-colors">
-              Notas
-            </Link>
-            <Link href={"/updates"} className="bg-blue-950 hover:bg-blue-800 px-3 py-1 rounded-md transition-colors">
-              Updates
-            </Link>
-            <Link href={"/about"} className="bg-blue-950 hover:bg-blue-800 px-3 py-1 rounded-md transition-colors">
-              About
-            </Link>
-          </div>
-        </nav>
-        
+
+        <Navbar />
+
         {children}
 
-          <footer className="w-full h-30 flex items-center justify-center bg-blue-950 text-white mt-auto">
-            <p className="text-sm">&copy; App de notas. Ibañez Ian, developer. </p>
-              <div className="ml-4 flex items-start flex-col">
-                <h3 className="text-sm font-semibold">PAGINAS PRINCIPALES</h3>
-                <Link href={"/"} className="ml-4 hover:underline">
-                  Home
-                </Link>
-                <Link href={"/notes"} className="ml-4 hover:underline">
-                  Notas
-                </Link>
-                <Link href={"/updates"} className="ml-4 hover:underline">
-                  Updates
-                </Link>
-              </div>
-          </footer>
+        <Footer />
+        
       </body>
     </html>
   );
