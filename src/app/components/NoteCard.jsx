@@ -1,8 +1,8 @@
 import Link from 'next/link'
 
-export default function NoteCard( { note, key } ) { 
+export default function NoteCard( { note } ) { 
     return (
-        <section key={key} className='w-64 h-64 my-8 p-6 rounded-lg flex flex-col bg-amber-500 text-black justify-between'>
+        <section className='w-64 h-64 my-8 p-6 rounded-lg flex flex-col bg-amber-500 text-black justify-between'>
         <div>
             <h1 className='font-semibold text-lg'>{note.title}</h1>
             <p>{note.content.slice(0, 75)}...</p>
