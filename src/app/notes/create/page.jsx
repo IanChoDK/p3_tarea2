@@ -1,6 +1,6 @@
 "use client"
 import { useState } from 'react'
-import { useNotes } from '../NotesContext'
+import { useNotes } from '../../context/NotesContext'
 import { useRouter } from 'next/navigation'
 import Axios from 'axios'
 
@@ -20,7 +20,7 @@ function CreateNotePage() {
     title: '',
     content: '',
     ejemplo: '',
-    category_id: '1'
+    categoryId: '1'
   })
 
   const handleSubmit = (e) => {
@@ -99,7 +99,7 @@ function CreateNotePage() {
           <p className="text-white flex flex-1 pt-2">Categoria</p>
 
           <div className='flex flex-col gap-2'>
-            <select className='p-2 border border-white bg-amber-500 rounded-md my-4' value={formData.category_id} onChange={(e) => setFormData({ ...formData, category_id: String(e.target.value) })}>
+            <select className='p-2 border border-white bg-amber-500 rounded-md my-4' value={formData.categoryId} onChange={(e) => setFormData({ ...formData, categoryId: String(e.target.value) })}>
               {categories.map((category) => (
                 <option key={category.id} value={category.id}>{category.title}</option>
               ))}
