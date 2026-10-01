@@ -1,8 +1,12 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
+import { createOrUpdateCurrentUser } from "@/lib/currentUser";
 
 export async function PUT(request, { params }) {
     try {
+        const user = await createOrUpdateCurrentUser()
+        if (!user) return NextResponse.json({ error: "error auth" }, { status: 401 })
+
         const { id } = await params
         const { data } = await request.json()
 
@@ -22,11 +26,13 @@ export async function PUT(request, { params }) {
         }
 
         const updatedNote = db.note.update({
-            where: {id: parseInt(id)},
+            where: {
+                id: parseInt(id),
+                userId: user.id
+            },
             data: updatedData,
             include: { category: true }
         })
-
         return NextResponse.json(updatedNote)
     } catch (error) {
         return NextResponse.json({ error: "error en el put de notes" }, {status: 500})
@@ -36,11 +42,16 @@ export async function PUT(request, { params }) {
 
 export async function DELETE(request, {params }) {
     try {
+        const user = await createOrUpdateCurrentUser()
+        if (!user) return NextResponse.json({ error: "error auth" }, { status: 401 })
 
         const { id } = await params
 
         await db.note.delete({
-            where: { id: parseInt(id)}
+            where: { 
+                id: parseInt(id),
+                userId: user.id,
+            }
         })
         return NextResponse.json({message: "Nota eliminada"})
         
